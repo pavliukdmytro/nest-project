@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "esnext",
+    "target": "esnext",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components": ["./src/app/components/"]
+    },
+    "sourceMap": true,
+    "strict": true,
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  },
+//  "include": ["src"],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*/*.vue",
+  ],
+  "exclude": ["node_modules", "dist"],
+}
