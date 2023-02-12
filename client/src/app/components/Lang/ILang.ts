@@ -2,12 +2,10 @@ export interface IItem {
   name: string;
 }
 
-export interface IProps {
-  result: {
-    items: {
-      [name: number]: {
-        name: string;
-      };
+export interface IResult {
+  items: {
+    [name: number]: {
+      name: string;
     };
   };
 }

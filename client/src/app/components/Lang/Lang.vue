@@ -13,13 +13,17 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from 'vue';
+import { defineProps, computed, type PropType } from 'vue';
 
-import type { IItem, IProps } from '@/app/components/Lang/ILang';
+import { IItem, IResult } from '@/app/components/Lang/ILang';
 
 // type Props = renamed;
 
-const props = defineProps<IProps>();
+const props = defineProps({
+  result: {
+    type: Object as PropType<IResult>,
+  },
+});
 
 const items = computed(() => props?.result?.items);
 
