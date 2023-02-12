@@ -1,4 +1,6 @@
 import App from './libs/App';
 
-App.vue.setComponent(require('./app/App').default);
+/** def components */
 App.vue.setComponent(require('./app/components/Def/DefModal/DefModalContainer').default);
+
+App.vue.setComponent(require('./app/components/Lang/Lang.vue').default);

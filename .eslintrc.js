@@ -1,4 +1,4 @@
-module.exports = {
+  module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: 'tsconfig.json',
@@ -22,4 +22,24 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
   },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [
+            ".js",
+            ".ts",
+            ".vue"
+          ],
+          "moduleDirectory": [
+            "node_modules"
+          ]
+        },
+        "alias": {
+          "map": [
+            ["@", "./src/"],
+          ],
+          "extensions": [".ts"]
+        }
+      }
+    }
 };

@@ -44,7 +44,8 @@
       }
     ],
     "@typescript-eslint/no-var-requires": "off",
-    "global-require": "off"
+    "global-require": "off",
+    "vue/multi-word-component-names": "off"
   },
   "settings": {
     "import/resolver": {
@@ -60,7 +61,6 @@
       },
       "alias": {
         "map": [
-          // I have my actions folder in ./shared/actions
           ["@", "./src/"],
           ["@components", "./src/app/components/"]
         ],

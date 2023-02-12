@@ -13,13 +13,10 @@
 import { mapState, mapMutations } from 'vuex';
 import DefModal from '@/app/components/Def/DefModal/DefModal.vue';
 
-import TestModal from '@/app/components/Modals/TestModal.vue';
-
 export default {
   name: 'DefModalContainer',
   components: {
     DefModal,
-    TestModal,
   },
   computed: {
     ...mapState({

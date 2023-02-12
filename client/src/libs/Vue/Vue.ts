@@ -25,19 +25,16 @@ class Vue implements IVue {
   createPropsFromAttributes(data: HTMLDivElement): IParams {
     try {
       const { dataset } = data;
-      console.dir(dataset);
 
       const params: IParams = {};
       // eslint-disable-next-line no-restricted-syntax
       for (const key in dataset) {
         // eslint-disable-next-line no-continue
         if (key === 'vue') continue;
-        // console.log(key);
         params[key] = JSON.parse(dataset[key] as string);
       }
 
       return params;
-      // return {};
     } catch (err) {
       console.error(err);
       return {};
