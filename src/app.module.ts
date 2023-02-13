@@ -1,7 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { I18nModule, QueryResolver, AcceptLanguageResolver } from 'nestjs-i18n';
+import {
+  I18nModule,
+  QueryResolver,
+  // AcceptLanguageResolver,
+} from 'nestjs-i18n';
 import { LangService } from './lang/lang.service';
 import { LangModule } from './lang/lang.module';
 import * as path from 'path';
@@ -16,8 +20,9 @@ import * as path from 'path';
       },
       resolvers: [
         { use: QueryResolver, options: ['lang'] },
-        AcceptLanguageResolver,
+        // AcceptLanguageResolver,
       ],
+      viewEngine: 'hbs',
     }),
     LangModule,
   ],

@@ -1,23 +1,15 @@
 <template>
   <div class="lang">
-    <button
-      v-for="item in items"
-      :key="item.name"
-      class="lang__item"
-      type="button"
-      @click="handlerClick(item)"
-    >
-      {{ item.name }}
-    </button>
+    <a v-for="{ name, link } in items" :key="name" class="lang__item" :href="link">
+      {{ name }}
+    </a>
   </div>
 </template>
 
 <script setup lang="ts">
 import { defineProps, computed, type PropType } from 'vue';
 
-import { IItem, IResult } from '@/app/components/Lang/ILang';
-
-// type Props = renamed;
+import { IResult } from '@/app/components/Lang/ILang';
 
 const props = defineProps({
   result: {
@@ -26,10 +18,6 @@ const props = defineProps({
 });
 
 const items = computed(() => props?.result?.items);
-
-const handlerClick = (item: IItem) => {
-  console.log(item);
-};
 </script>
 
 <style lang="scss" scoped>

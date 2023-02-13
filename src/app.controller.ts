@@ -1,25 +1,16 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Render, Req } from '@nestjs/common';
 import { AppService } from './app.service';
-import { I18n, I18nContext } from 'nestjs-i18n';
-import { LangService } from './lang/lang.service';
+import { IRequest } from '@/interfaces/IRequest';
 
 @Controller()
 export class AppController {
-  constructor(
-    private readonly appService: AppService,
-    private readonly langService: LangService,
-  ) {}
+  constructor(private readonly appService: AppService) {}
 
   @Get()
   @Render('index')
-  async root(@I18n() i18n: I18nContext) {
-    const messages = await i18n.t('index');
+  async root(@Req() req: IRequest) {
+    const data = await this.appService.getCommonData(req);
 
-    return {
-      lang: {
-        items: this.langService.getItems(),
-      },
-      messages,
-    };
+    return data;
   }
 }

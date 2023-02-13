@@ -6,6 +6,7 @@ export interface IResult {
   items: {
     [name: number]: {
       name: string;
+      link: string;
     };
   };
 }

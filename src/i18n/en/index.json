@@ -1,3 +1,5 @@
 {
-  "pageTitle": "main page"
+  "pageTitle": "main page",
+  "title": "Main page",
+  "greet": "Hello, {username}"
 }
