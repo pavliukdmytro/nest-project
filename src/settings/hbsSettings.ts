@@ -5,6 +5,12 @@ hbs.registerHelper('toJson', function (context) {
   return JSON.stringify(context);
 });
 
+hbs.registerHelper('setStore', function (context, options) {
+  return `  
+    <script>App.store.commit('setState/${options}', ${JSON.stringify(context)})</script>
+  `;
+});
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const hbsutils = require('hbs-utils')(hbs);
 

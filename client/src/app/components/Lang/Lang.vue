@@ -1,6 +1,12 @@
 <template>
   <div class="lang">
-    <a v-for="{ name, link } in items" :key="name" class="lang__item" :href="link">
+    <a
+      v-for="{ name, link, active } in items"
+      :key="name"
+      :class="{ lang__item_active: active }"
+      :href="link"
+      class="lang__item"
+    >
       {{ name }}
     </a>
   </div>
@@ -24,7 +30,11 @@ const items = computed(() => props?.result?.items);
 .lang {
   &__item {
     padding: 3px 6px 2px;
-    border: 1px solid black;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+    &_active {
+      border-color: grey;
+    }
   }
 }
 </style>

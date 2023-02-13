@@ -7,6 +7,7 @@ export interface IResult {
     [name: number]: {
       name: string;
       link: string;
+      active?: boolean;
     };
   };
 }

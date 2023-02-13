@@ -12,6 +12,7 @@ const store = createStore({
   },
   modules: {
     global: require('./modules/global/global').default,
+    menu: require('./modules/menu/menu').default,
   },
   mutations: {},
   plugins: [loader],

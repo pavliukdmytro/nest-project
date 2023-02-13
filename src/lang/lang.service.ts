@@ -6,26 +6,20 @@ import { IRequest } from '@/interfaces/IRequest';
 export class LangService {
   getItems(req: IRequest): LangItemsDto {
     const { path, i18nLang } = req;
-    console.log(req);
+
     return {
       items: [
         {
           name: 'ua',
           link: `${path}`,
+          active: i18nLang === 'ua',
         },
         {
           name: 'en',
           link: `${path}?lang=en`,
+          active: i18nLang === 'en',
         },
-      ].map((el) => {
-        if (el.name === i18nLang) {
-          return {
-            ...el,
-            active: true,
-          };
-        }
-        return el;
-      }),
+      ],
     };
   }
 }

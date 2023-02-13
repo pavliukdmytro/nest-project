@@ -6,6 +6,10 @@ class Store implements IStore {
   commit(name: string, payload?: any) {
     store.commit(name, payload);
   }
+
+  setState(name: string, payload: any) {
+    store.commit(`setState/${name}`, payload);
+  }
 }
 
 export default new Store();

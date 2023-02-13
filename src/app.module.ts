@@ -8,6 +8,7 @@ import {
 } from 'nestjs-i18n';
 import { LangService } from './lang/lang.service';
 import { LangModule } from './lang/lang.module';
+import { BlogModule } from './blog/blog.module';
 import * as path from 'path';
 
 @Module({
@@ -25,8 +26,10 @@ import * as path from 'path';
       viewEngine: 'hbs',
     }),
     LangModule,
+    BlogModule,
   ],
   controllers: [AppController],
   providers: [AppService, LangService],
+  // exports: [AppService],
 })
 export class AppModule {}
