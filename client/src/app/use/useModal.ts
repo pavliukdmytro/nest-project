@@ -1,4 +1,4 @@
-import store from '@/store';
+import { store } from '@/store';
 
 import { IModalData } from '@/store/modules/global/IGlobal';
 

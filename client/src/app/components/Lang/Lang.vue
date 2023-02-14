@@ -13,17 +13,12 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed, type PropType } from 'vue';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 
-import { IResult } from '@/app/components/Lang/ILang';
+const { state } = useStore();
 
-const props = defineProps({
-  result: {
-    type: Object as PropType<IResult>,
-  },
-});
-
-const items = computed(() => props?.result?.items);
+const items = computed(() => state?.global?.data?.lang?.items);
 </script>
 
 <style lang="scss" scoped>

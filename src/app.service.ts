@@ -17,25 +17,39 @@ export class AppService {
     private readonly langService: LangService,
     private readonly i18nService: I18nService,
   ) {}
+  getUrl(url: string, lang): string {
+    if (lang === 'ua') return url;
+    return url + `?lang=${lang}`;
+  }
+  async getTranslateData(
+    lang: string,
+    fileName: string,
+    args?: IObject,
+  ): Promise<any> {
+    const data = await this.i18nService.t(fileName, {
+      args: {
+        lang: this.getUrl('', lang),
+        ...args,
+      },
+      lang,
+    });
+    return data;
+  }
+
   async getCommonData(req: IRequest, pageName: string): Promise<ICommonData> {
     const { i18nLang } = req;
-    const messages: IObject = await this.i18nService.t(pageName, {
-      args: { username: 'Dima' },
-      lang: i18nLang,
+    const messages: IObject = await this.getTranslateData(i18nLang, pageName, {
+      username: 'Dima',
     });
-    const menu: IMenu = await this.i18nService.t('menu', {
-      args: {
-        lang: i18nLang === 'ua' ? '' : `?lang=${i18nLang}`,
-      },
-      lang: i18nLang,
-    });
+
+    const menu: IMenu = await this.getTranslateData(i18nLang, 'menu');
 
     return {
       lang: {
         ...this.langService.getItems(req),
       },
-      main: {
-        url: `/${i18nLang && '?lang='}${i18nLang}`,
+      mainPageLink: {
+        url: this.getUrl('/', i18nLang),
         text: '',
       },
       menu,

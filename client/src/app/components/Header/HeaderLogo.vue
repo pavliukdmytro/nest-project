@@ -1,12 +1,19 @@
 <template>
-  <a href="/" class="header-logo">
+  <a v-if="mainPageLink" :href="mainPageLink.url" class="header-logo">
     <svg class="header-logo__icon">
       <use xlink:href="#svg-flag"></use>
     </svg>
   </a>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useStore } from '@/store';
+import { computed } from 'vue';
+
+const { state } = useStore();
+
+const mainPageLink = computed(() => state.global?.data?.mainPageLink);
+</script>
 
 <style lang="scss" scoped>
 .header-logo {

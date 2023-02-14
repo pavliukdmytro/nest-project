@@ -2,22 +2,22 @@
   <div class="header">
     <div class="header-top">
       <HeaderLogo />
-      <Menu />
-      <Lang :result="lang" />
+      <Menu v-if="screenWidth >= 992" />
+      <Lang v-if="screenWidth >= 992" />
+      <MobileNavigationButton v-if="screenWidth < 992" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { defineProps, computed } from 'vue';
-
 import HeaderLogo from '@/app/components/Header/HeaderLogo.vue';
 import Lang from '@/app/components/Lang/Lang.vue';
 import Menu from '@/app/components/menu/Menu.vue';
+import MobileNavigationButton from '@/app/components/MobileNavigation/MobileNavigationButton.vue';
 
-const props = defineProps(['result']);
+import useScreenWidth from '@/app/use/useScreenWidth';
 
-const lang = computed(() => props.result.lang);
+const screenWidth = useScreenWidth();
 </script>
 
 <style lang="scss" scoped>

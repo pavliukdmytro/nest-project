@@ -7,7 +7,23 @@ hbs.registerHelper('toJson', function (context) {
 
 hbs.registerHelper('setStore', function (context, options) {
   return `  
-    <script>App.store.commit('setState/${options}', ${JSON.stringify(context)})</script>
+    <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      App.store.commit('setState/${options}', ${JSON.stringify(context)})
+    });
+    </script>
+  `;
+});
+
+hbs.registerHelper('setStoreGlobal', function (context, options) {
+  return `  
+    <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      App.store.commit('setState/global', ${JSON.stringify({
+        [options]: context,
+      })});
+    });
+    </script>
   `;
 });
 

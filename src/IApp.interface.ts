@@ -8,7 +8,7 @@ export interface ICommonData {
       [name: number]: ILangItem;
     };
   };
-  main: ILink;
+  mainPageLink: ILink;
   messages: IObject;
 
   menu: {

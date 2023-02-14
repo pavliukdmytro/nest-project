@@ -1,18 +1,16 @@
 import { IMenu } from '@/store/modules/menu/IMenu';
 
-interface IState {
+export interface IMenuState {
   data: IMenu;
 }
 
 export default {
-  state: (): IState => ({
-    data: {
-      items: [{ url: '', text: '' }],
-    },
+  state: () => ({
+    data: {},
   }),
   mutations: {
     /** change screenWidth * */
-    'setState/menu': (state: IState, payload: IMenu) => {
+    'setState/menu': (state: IMenuState, payload: IMenu) => {
       // eslint-disable-next-line no-param-reassign
       state.data = payload;
     },
