@@ -6,6 +6,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const webpack = require('webpack');
 
 function getAllHbsRootFiles() {
   const files = fs.readdirSync('./src/views/').filter((file) => file.match(/.hbs$/));
@@ -109,5 +110,6 @@ module.exports = {
       patterns: [{ from: 'src/images', to: 'images' }],
     }),
     new VueLoaderPlugin(),
+    new webpack.DefinePlugin(({ __VUE_OPTIONS_API__: true, __VUE_PROD_DEVTOOLS__: false }))
   ],
 };

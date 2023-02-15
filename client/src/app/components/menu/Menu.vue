@@ -1,20 +1,41 @@
 <template>
   <nav class="menu">
-    <a v-for="{ text, url, test } in items" :key="url" :href="url">{{ text }}{{ test }}</a>
+    <a
+      v-for="{ text, url, active } in items"
+      :key="url"
+      :href="url"
+      class="menu__item"
+      :class="{ menu__item_active: active }"
+    >
+      {{ text }}
+    </a>
   </nav>
 </template>
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useStore } from 'vuex';
-import { IMenu } from '@/store/modules/menu/IMenu';
+import { useStore } from '@/store';
 
 const store = useStore();
 
-const items = computed<IMenu>(() => store.state.menu.data.items);
+const items = computed(() => store?.state?.menu?.data?.items);
 </script>
 
 <style lang="scss" scoped>
 .menu {
+  display: flex;
+  &__item {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-position: under;
+    font-size: 18px;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+    &_active {
+      text-decoration-color: currentColor;
+    }
+  }
 }
 </style>

@@ -1,4 +1,3 @@
-import { IObject } from '@/interfaces/IObject';
 import { ILink } from '@/interfaces/ILink';
 
 export interface IEmptyObject {
@@ -15,9 +14,19 @@ export interface IModal {
   isOpen: boolean;
   data?: IModalData;
 }
+export interface ILang {
+  items: {
+    [name: number]: {
+      text: string;
+      url: string;
+      active?: boolean;
+    };
+  };
+}
 
 interface IData {
   mainPageLink?: ILink;
+  lang?: ILang;
 }
 export interface IGlobal {
   screenWidth: number;

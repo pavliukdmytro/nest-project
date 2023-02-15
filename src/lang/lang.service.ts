@@ -10,13 +10,13 @@ export class LangService {
     return {
       items: [
         {
-          name: 'ua',
-          link: `${path}`,
+          text: 'ua',
+          url: `${path}`,
           active: i18nLang === 'ua',
         },
         {
-          name: 'en',
-          link: `${path}?lang=en`,
+          text: 'en',
+          url: `${path}?lang=en`,
           active: i18nLang === 'en',
         },
       ],

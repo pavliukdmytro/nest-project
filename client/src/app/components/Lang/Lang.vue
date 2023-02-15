@@ -1,20 +1,20 @@
 <template>
   <div class="lang">
     <a
-      v-for="{ name, link, active } in items"
-      :key="name"
+      v-for="{ text, url, active } in items"
+      :key="text"
       :class="{ lang__item_active: active }"
-      :href="link"
+      :href="url"
       class="lang__item"
     >
-      {{ name }}
+      {{ text }}
     </a>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useStore } from 'vuex';
+import { useStore } from '@/store';
 
 const { state } = useStore();
 

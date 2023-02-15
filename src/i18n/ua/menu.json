@@ -2,7 +2,13 @@
   "items": [
     {
       "url": "/blog/{lang}",
-      "text": "Блог"
+      "text": "Блог",
+      "active": false
+    },
+    {
+      "url": "/catalog/{lang}",
+      "text": "Каталог",
+      "active": false
     }
   ]
 }

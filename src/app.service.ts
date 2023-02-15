@@ -5,11 +5,7 @@ import { I18nService } from 'nestjs-i18n';
 import { IRequest } from '@/interfaces/IRequest';
 import { ICommonData } from '@/IApp.interface';
 import { IObject } from '@/interfaces/IObject';
-import { ILink } from '@/interfaces/ILink';
-
-interface IMenu {
-  items: Array<ILink>;
-}
+import { IMenu } from '@/IApp.interface';
 
 @Injectable()
 export class AppService {
@@ -36,13 +32,24 @@ export class AppService {
     return data;
   }
 
+  async getMenuData(req: IRequest): Promise<IMenu> {
+    const { i18nLang, url } = req;
+    const menu: IMenu = await this.getTranslateData(i18nLang, 'menu');
+    menu.items = menu.items.map((el) => {
+      if (el.url !== url) return el;
+      return {
+        ...el,
+        active: true,
+      };
+    });
+    return menu;
+  }
+
   async getCommonData(req: IRequest, pageName: string): Promise<ICommonData> {
     const { i18nLang } = req;
     const messages: IObject = await this.getTranslateData(i18nLang, pageName, {
       username: 'Dima',
     });
-
-    const menu: IMenu = await this.getTranslateData(i18nLang, 'menu');
 
     return {
       lang: {
@@ -52,7 +59,7 @@ export class AppService {
         url: this.getUrl('/', i18nLang),
         text: '',
       },
-      menu,
+      menu: await this.getMenuData(req),
       messages,
     };
   }
