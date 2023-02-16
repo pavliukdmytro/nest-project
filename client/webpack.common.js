@@ -58,7 +58,7 @@ module.exports = {
       },
       /** babel **/
       {
-        test: /\.(ts|js)$/,
+        test: /\.(tsx?|js)$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
@@ -68,7 +68,10 @@ module.exports = {
               'babel-preset-typescript-vue3',
               '@babel/preset-typescript',
             ],
-            plugins: ['@babel/plugin-proposal-object-rest-spread'],
+            plugins: [
+              '@vue/babel-plugin-jsx',
+              '@babel/plugin-proposal-object-rest-spread',
+            ],
           },
         },
       },
@@ -90,7 +93,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js', '.vue'],
+    extensions: ['.ts', '.tsx', '.js', '.vue'],
     alias: {
       '@': path.resolve(__dirname, './src/'),
       '@components': path.resolve(__dirname, './src/app/components/'),
