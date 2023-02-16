@@ -7,6 +7,7 @@ import { IProps, IOptions } from '@/use/useModalSwipe/IModalSwipe';
 let app: App | null;
 const isShow = ref(true);
 
+document.body.insertAdjacentHTML('beforeend', '<div id="swipe-modals"></div>');
 export default function useModalSwipe() {
   const leave = () => {
     app?.unmount();
@@ -22,7 +23,7 @@ export default function useModalSwipe() {
       props
     );
 
-    app.mount('#modals');
+    app.mount('#swipe-modals');
   };
   const hide = () => {
     if (app === null && !isShow.value) return;

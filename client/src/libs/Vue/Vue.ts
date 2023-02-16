@@ -53,10 +53,6 @@ class Vue implements IVue {
           const app = createApp(this.components[name], this.createPropsFromAttributes(el));
           app.use(store, storeKey);
 
-          app.use(require('vue-universal-modal').default, {
-            teleportTarget: '#modals',
-          });
-
           app.mount(el);
         }
       });

@@ -13,18 +13,10 @@ class App implements IApp {
     this.vue = vue;
     this.store = store;
 
-    this.main();
+    // this.main();
   }
 
-  handlerWindowResize() {
-    window.addEventListener('resize', () => {
-      this.store.commit('global/changeScreenWidth');
-    });
-  }
-
-  main(): void {
-    this.handlerWindowResize();
-  }
+  // main(): void {}
 }
 
 export default new App(Vue, Store);
