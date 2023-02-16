@@ -4,11 +4,13 @@ import VueUniversalModal from 'vue-universal-modal';
 
 let app: App | null;
 
-document.body.insertAdjacentHTML('beforeend', '<div class="modal-component"></div>');
-document.body.insertAdjacentHTML('beforeend', '<div id="modals"></div>');
+const { body } = document;
+
+body.insertAdjacentHTML('beforeend', '<div class="modal-component"></div>');
+body.insertAdjacentHTML('beforeend', '<div id="modals"></div>');
 const isOpen = ref(true);
 interface IProps {
-  [name: string]: any;
+  [name: string]: unknown;
 }
 
 export default function useModal() {

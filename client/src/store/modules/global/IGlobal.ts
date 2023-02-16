@@ -15,7 +15,5 @@ interface IData {
   lang?: ILang;
 }
 export interface IGlobal {
-  loader: boolean;
-
   data: IData;
 }

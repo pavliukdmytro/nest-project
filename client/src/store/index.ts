@@ -2,7 +2,6 @@ import { InjectionKey } from 'vue';
 import { createStore, useStore as baseUseStore, Store } from 'vuex';
 
 import { IState } from '@/store/IState';
-import loader from './plugins/loader';
 
 // define your typings for the store state
 
@@ -22,7 +21,6 @@ export const store = createStore<IState>({
     menu: require('./modules/menu/menu').default,
   },
   mutations: {},
-  plugins: [loader],
   strict: debug,
 });
 
