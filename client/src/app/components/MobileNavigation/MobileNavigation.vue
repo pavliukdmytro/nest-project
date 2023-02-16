@@ -3,9 +3,9 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue';
-
-const props = defineProps(['result']);
+const props = defineProps({
+  result: Object,
+});
 </script>
 
 <style lang="scss" scoped>

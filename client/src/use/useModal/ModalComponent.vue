@@ -10,7 +10,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue';
 import useModal from '@/use/useModal/useModal';
 
 const modal = useModal();

@@ -17,7 +17,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue';
 import useModalSwipe from '@/use/useModalSwipe/useModalSwipe';
 
 const modal = useModalSwipe();
