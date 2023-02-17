@@ -67,7 +67,9 @@
       "alias": {
         "map": [
           ["@", "./src/"],
-          ["@components", "./src/app/components/"]
+          ["@components", "./src/app/components/"],
+          ["@def", "./src/app/components/Def/"],
+          ["@use", "./src/use/"]
         ],
         "extensions": [".ts",".tsx", ".js", ".vue"]
       }

@@ -29,9 +29,6 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-:root {
-  --animation-spead: 0.5s;
-}
 .modal-fade {
   position: fixed;
   top: 0;
@@ -40,6 +37,7 @@ const props = defineProps({
   left: 0;
   background-color: rgba(0, 0, 0, 0.3);
   cursor: pointer;
+  z-index: 2;
 }
 .modal-swipe {
   position: fixed;
@@ -48,6 +46,7 @@ const props = defineProps({
   background-color: #fff;
   width: 100%;
   padding: 16px;
+  z-index: 2;
   @include point-md {
     padding: 24px;
   }

@@ -6,6 +6,7 @@ import { IRequest } from '@/interfaces/IRequest';
 import { ICommonData } from '@/IApp.interface';
 import { IObject } from '@/interfaces/IObject';
 import { IMenu } from '@/IApp.interface';
+import { ICookiesAccept } from '@/IApp.interface';
 
 @Injectable()
 export class AppService {
@@ -45,6 +46,11 @@ export class AppService {
     return menu;
   }
 
+  async getCookiesAccept(req: IRequest): Promise<ICookiesAccept> {
+    const { i18nLang } = req;
+    return await this.getTranslateData(i18nLang, 'cookiesAccept');
+  }
+
   async getCommonData(req: IRequest, pageName: string): Promise<ICommonData> {
     const { i18nLang } = req;
     const messages: IObject = await this.getTranslateData(i18nLang, pageName, {
@@ -59,6 +65,7 @@ export class AppService {
         url: this.getUrl('/', i18nLang),
         text: '',
       },
+      cookiesAccept: await this.getCookiesAccept(req),
       menu: await this.getMenuData(req),
       messages,
     };

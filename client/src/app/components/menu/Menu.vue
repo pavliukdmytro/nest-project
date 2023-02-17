@@ -23,7 +23,12 @@ const items = computed(() => store?.state?.menu?.data?.items);
 
 <style lang="scss" scoped>
 .menu {
-  display: flex;
+  display: grid;
+  grid-row-gap: 16px;
+  @include point-lg {
+    display: flex;
+    flex-direction: row;
+  }
   &__item {
     text-decoration: underline;
     text-decoration-color: transparent;

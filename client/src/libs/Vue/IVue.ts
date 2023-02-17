@@ -1,5 +1,6 @@
 export interface IComponent {
   __name?: string;
+  __file?: string;
   name?: string;
 }
 export interface IComponents {

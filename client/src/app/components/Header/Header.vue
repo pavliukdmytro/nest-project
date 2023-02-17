@@ -6,10 +6,6 @@
       <Lang v-if="screenWidth >= 992" />
       <MobileNavigationButton v-if="screenWidth < 992" />
     </div>
-    <div>
-      <!--      <button @click="show">open</button>-->
-      <button @click="hide">close</button>
-    </div>
   </div>
 </template>
 
@@ -21,18 +17,7 @@ import MobileNavigationButton from '@/app/components/MobileNavigation/MobileNavi
 
 import useScreenWidth from '@/use/useScreenWidth';
 
-import useModalSwipe from '@/use/useModalSwipe/useModalSwipe';
-
 const screenWidth = useScreenWidth();
-
-const modalSwipe = useModalSwipe();
-const show = () => {
-  // modalSwipe.show(TestModal, {});
-};
-
-const hide = () => {
-  modalSwipe.hide();
-};
 </script>
 
 <style lang="scss" scoped>

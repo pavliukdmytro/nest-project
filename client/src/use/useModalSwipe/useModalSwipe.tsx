@@ -1,4 +1,5 @@
 import { DefineComponent, createApp, App, ref } from 'vue';
+import { store, storeKey } from '@/store';
 
 import ModalSwipe from '@/use/useModalSwipe/ModalSwipe.vue';
 
@@ -22,6 +23,8 @@ export default function useModalSwipe() {
       </ModalSwipe>,
       props
     );
+
+    app.use(store, storeKey);
 
     app.mount('#swipe-modals');
   };

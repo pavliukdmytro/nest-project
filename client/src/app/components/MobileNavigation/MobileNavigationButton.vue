@@ -7,17 +7,24 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue';
 import MobileNavigation from '@/app/components/MobileNavigation/MobileNavigation.vue';
 import useModalSwipe from '@/use/useModalSwipe/useModalSwipe';
+import useScreenWidth from '@/use/useScreenWidth';
 
 const modal = useModalSwipe();
+const screenWidth = useScreenWidth();
+const getWidth = computed((): string => {
+  if (screenWidth.value < 768) return '280px';
+  return '380px';
+});
 
 const handlerClick = () => {
   modal.show(
     MobileNavigation,
-    { result: 'Hello world!!' },
+    {},
     {
-      width: '280px',
+      width: getWidth.value,
     }
   );
 };

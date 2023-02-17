@@ -15,8 +15,10 @@ class Vue implements IVue {
   }
 
   setComponent(component: IComponent) {
-    // eslint-disable-next-line no-underscore-dangle
-    const name = component?.__name || component?.name;
+    const name = // eslint-disable-next-line no-underscore-dangle
+      component?.__name ||
+      component?.name || // eslint-disable-next-line no-underscore-dangle
+      component?.__file?.split('.')?.[0]?.match(/\w*$/)?.[0];
     if (name) {
       this.components[name] = component;
     }

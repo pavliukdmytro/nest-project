@@ -9,6 +9,12 @@ export interface IMenu {
   items: Array<IMenuItem>;
 }
 
+export interface ICookiesAccept {
+  text: string;
+  agree: string;
+  disagree: string;
+}
+
 export interface ICommonData {
   lang: {
     items: {
@@ -19,4 +25,5 @@ export interface ICommonData {
   messages: IObject;
 
   menu: IMenu;
+  cookiesAccept: ICookiesAccept;
 }
