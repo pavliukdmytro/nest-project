@@ -15,8 +15,7 @@ export class AppService {
     private readonly i18nService: I18nService,
   ) {}
   getUrl(url: string, lang): string {
-    if (lang === 'ua') return url;
-    return url + `?lang=${lang}`;
+    return `/${lang}${url}`;
   }
   async getTranslateData(
     lang: string,
@@ -25,7 +24,7 @@ export class AppService {
   ): Promise<any> {
     const data = await this.i18nService.t(fileName, {
       args: {
-        lang: this.getUrl('', lang),
+        lang: lang,
         ...args,
       },
       lang,
@@ -68,6 +67,9 @@ export class AppService {
       cookiesAccept: await this.getCookiesAccept(req),
       menu: await this.getMenuData(req),
       messages,
+      args: {
+        lang: i18nLang,
+      },
     };
   }
 }

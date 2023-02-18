@@ -10,7 +10,7 @@ export class NotFoundExceptionFilter implements ExceptionFilter {
   catch(exception: NotFoundException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
-
-    response.redirect('/not-found/');
+    const { i18nLang } = ctx.getRequest();
+    response.redirect(`/${i18nLang}/not-found/`);
   }
 }

@@ -13,6 +13,7 @@ async function bootstrap() {
     index: false,
   });
 
+  // redirect to 404 page
   app.useGlobalFilters(new NotFoundExceptionFilter());
 
   // add hbs

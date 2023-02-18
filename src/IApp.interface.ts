@@ -26,4 +26,7 @@ export interface ICommonData {
 
   menu: IMenu;
   cookiesAccept: ICookiesAccept;
+  args: {
+    lang: string;
+  };
 }

@@ -2,7 +2,7 @@
   "pageTitle": "404 page",
   "title": "Page not found 404",
   "goHome": {
-    "url": "/",
+    "url": "/{lang}/",
     "text": "Go home page"
   }
 }
