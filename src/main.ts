@@ -5,6 +5,8 @@ import hbsSettings from './settings/hbsSettings';
 import { join } from 'path';
 import { NotFoundExceptionFilter } from '@/exceptionFilters/NotFoundExceptionFilter';
 
+const { SERVER_PORT } = process.env;
+
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
@@ -19,6 +21,6 @@ async function bootstrap() {
   // add hbs
   hbsSettings(app);
 
-  await app.listen(3000);
+  await app.listen(SERVER_PORT);
 }
 bootstrap();

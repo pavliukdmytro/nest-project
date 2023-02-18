@@ -26,7 +26,7 @@ export class PathResolver implements I18nResolver {
         }
       }
     }
-    console.log(lang);
+
     return lang;
   }
 }

@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { I18nModule } from 'nestjs-i18n';
@@ -10,6 +11,7 @@ import * as path from 'path';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     I18nModule.forRoot({
       fallbackLanguage: 'ua',
       loaderOptions: {
