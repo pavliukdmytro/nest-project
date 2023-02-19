@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import SignIn from '@components/SignIn/SignIn.vue';
+import SignIn from '@components/auth/SignIn/SignIn.vue';
 import useModal from '@use/useModal/useModal';
 
 const modal = useModal();
