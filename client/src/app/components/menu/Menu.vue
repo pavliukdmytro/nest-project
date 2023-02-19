@@ -33,8 +33,7 @@ const items = computed(() => store?.state?.menu?.data?.items);
     text-decoration: underline;
     text-decoration-color: transparent;
     text-underline-position: under;
-    font-size: 18px;
-
+    font-size: 14px;
     &:not(:last-child) {
       margin-right: 20px;
     }

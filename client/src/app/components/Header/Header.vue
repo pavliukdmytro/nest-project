@@ -1,21 +1,30 @@
 <template>
   <div class="header">
-    <div class="header-top">
-      <HeaderLogo />
-      <Menu v-if="screenWidth >= 992" />
-      <Lang v-if="screenWidth >= 992" />
-      <MobileNavigationButton v-if="screenWidth < 992" />
+    <div class="header-top-wrapper">
+      <div class="container">
+        <div class="header-top">
+          <Menu v-if="screenWidth >= 992" />
+          <Lang v-if="screenWidth >= 992" />
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="header-main">
+        <HeaderLogo />
+        <AuthControl v-if="screenWidth >= 992" />
+        <MobileNavigationButton v-if="screenWidth < 992" />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import HeaderLogo from '@/app/components/Header/HeaderLogo.vue';
-import Lang from '@/app/components/Lang/Lang.vue';
-import Menu from '@/app/components/menu/Menu.vue';
-import MobileNavigationButton from '@/app/components/MobileNavigation/MobileNavigationButton.vue';
-
+import HeaderLogo from '@components/Header/HeaderLogo.vue';
+import AuthControl from '@components/auth/AuthControl/AuthControl.vue';
 import useScreenWidth from '@/use/useScreenWidth';
+import Lang from '@components/Lang/Lang.vue';
+import Menu from '@components/menu/Menu.vue';
+import MobileNavigationButton from '@components/MobileNavigation/MobileNavigationButton.vue';
 
 const screenWidth = useScreenWidth();
 </script>
@@ -23,7 +32,17 @@ const screenWidth = useScreenWidth();
 <style lang="scss" scoped>
 .header {
 }
+.header-top-wrapper {
+  background-color: var(--dark-grey);
+}
 .header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  color: #fff;
+}
+.header-main {
   display: flex;
   align-items: center;
   justify-content: space-between;

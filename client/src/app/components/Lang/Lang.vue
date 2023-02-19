@@ -27,6 +27,7 @@ const items = computed(() => state?.global?.data?.lang?.items);
     padding: 3px 6px 2px;
     border: 1px solid transparent;
     text-transform: uppercase;
+    font-size: 14px;
     &_active {
       border-color: grey;
     }

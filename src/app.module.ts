@@ -7,20 +7,28 @@ import { PathResolver } from '@/settings/PathResolver';
 import { LangService } from './lang/lang.service';
 import { LangModule } from './lang/lang.module';
 import { BlogModule } from './blog/blog.module';
-import * as path from 'path';
+import { MongooseModule } from '@nestjs/mongoose';
+import { join } from 'path';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    // .env
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    // translates
     I18nModule.forRoot({
       fallbackLanguage: 'ua',
       loaderOptions: {
-        path: path.join(__dirname, '/i18n/'),
+        path: join(__dirname, '/i18n/'),
         watch: true,
       },
       resolvers: [{ use: PathResolver, options: ['lang'] }],
       viewEngine: 'hbs',
     }),
+    MongooseModule.forRoot('mongodb://localhost/pet-shop'),
+
+    // other modules
     LangModule,
     BlogModule,
   ],
