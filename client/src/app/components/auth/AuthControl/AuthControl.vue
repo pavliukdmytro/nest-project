@@ -12,7 +12,7 @@ import useModal from '@use/useModal/useModal';
 
 const modal = useModal();
 const handlerClick = (): void => {
-  modal.show(SignIn);
+  modal.show(SignIn, {}, { width: '320px' });
 };
 </script>
 

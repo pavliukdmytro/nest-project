@@ -1,6 +1,10 @@
 <template>
   <Modal :model-value="props?.isOpen.value" :close="hide" @after-leave="afterLeave">
-    <div class="modal">
+    <div
+      class="modal"
+      :class="{ modal_wide: props?.options?.width }"
+      :style="{ 'max-width': props?.options?.width }"
+    >
       <span class="modal__close" @click="hide">
         <svg class="modal__icon">
           <use xlink:href="#svg-close"></use>
@@ -12,18 +16,21 @@
 </template>
 
 <script lang="ts" setup>
+import { Ref } from 'vue';
 import useModal from '@/use/useModal/useModal';
 
 const modal = useModal();
 
-const props = defineProps({
-  isOpen: Object,
-  afterLeave: Function,
-});
-
+const props = defineProps<{
+  isOpen: Ref;
+  options?: {
+    width?: string;
+  };
+  afterLeave: () => void;
+}>();
+console.log(props);
 const hide = () => {
   modal.hide();
-  console.log('hide');
 };
 </script>
 
@@ -32,6 +39,9 @@ const hide = () => {
   background-color: #fff;
   position: relative;
   padding: 24px;
+  &_wide {
+    width: 100%;
+  }
   &__close {
     position: absolute;
     top: 8px;

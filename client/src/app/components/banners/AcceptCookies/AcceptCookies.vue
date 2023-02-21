@@ -20,8 +20,8 @@
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
-import DefButtonPrimary from '@def/DefButton/DefButtonPrimary.vue';
-import DefButtonSecondary from '@def/DefButton/DefButtonSecondary.vue';
+import DefButtonPrimary from '@components/Ui/UiButton/UiButtonPrimary.vue';
+import DefButtonSecondary from '@components/Ui/UiButton/UiButtonSecondary.vue';
 
 import useCookies from '@/use/useCookies';
 

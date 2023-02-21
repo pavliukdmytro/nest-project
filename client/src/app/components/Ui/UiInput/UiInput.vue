@@ -1,11 +1,11 @@
 <template>
-  <span class="def-input">
+  <span class="ui-input">
     <input
       ref="input"
       v-bind="props"
       :value="savedValue"
-      :class="{ 'def-input__fill_error': !isValid }"
-      class="def-input__fill"
+      :class="{ 'ui-input__fill_error': !isValid }"
+      class="ui-input__fill"
       @input="handlerInput"
     />
   </span>
@@ -20,6 +20,7 @@ interface IProps {
   required?: boolean;
   pattern?: string;
   value?: string;
+  placeholder?: string;
 }
 const props = withDefaults(defineProps<IProps>(), {
   type: 'text',
@@ -42,7 +43,7 @@ watch(props, (newProps) => {
 </script>
 
 <style lang="scss" scoped>
-.def-input {
+.ui-input {
   &__fill {
     height: 40px;
     padding: 15px;

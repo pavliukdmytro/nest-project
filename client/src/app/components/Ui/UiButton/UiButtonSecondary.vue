@@ -4,7 +4,7 @@
     :href="props?.href"
     :type="type"
     :form="form"
-    class="def-button-secondary"
+    class="ui-button-secondary"
   >
     <slot />
   </component>
@@ -25,7 +25,7 @@ const componentName = computed(() => (props?.href ? 'a' : 'button'));
 </script>
 
 <style lang="scss" scoped>
-.def-button-secondary {
+.ui-button-secondary {
   background-color: transparent;
   color: var(--dark-grey);
   border: 1px solid currentColor;

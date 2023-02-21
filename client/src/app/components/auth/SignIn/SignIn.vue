@@ -1,40 +1,37 @@
 <template>
   <div class="sign-in">
     <h1>Sign in</h1>
-    <form action="" @submit.prevent="handlerSubmit">
-      <DefInput :required="true" :value="testData" />
-      <input type="email" @input="handlerInput" />
-      <input type="password" />
-      <button type="submit">submit</button>
+    <form action="" class="sign-in-form" @submit.prevent="handlerSubmit">
+      <UiEmail placeholder="email" :required="true" />
+      <UiInput placeholder="password" type="password" :required="true" />
+      <UiButtonPrimary type="submit"> submit </UiButtonPrimary>
     </form>
     <button type="button" @click="handlerSignUp">sign up</button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import DefInput from '@def/DefInput/DefInput.vue';
+import UiInput from '@components/Ui/UiInput/UiInput.vue';
+import UiEmail from '@ui/UiEmail/UiEmail.vue';
 import SignUp from '@components/auth/SignUp/SignUp.vue';
 import useModal from '@use/useModal/useModal';
+import UiButtonPrimary from '@ui/UiButton/UiButtonPrimary.vue';
 
-const testData = ref('');
-
-const handlerInput = (e: InputEvent) => {
-  const target = e.target as HTMLInputElement;
-  testData.value = target.value;
-};
-const handlerSubmit = () => {
-  // console.log('submit');
-};
+const handlerSubmit = () => {};
 
 const modal = useModal();
 
-const handlerSignUp = () => {
-  modal.show(SignUp);
+const handlerSignUp = async () => {
+  await modal.hide();
+  modal.show(SignUp, {}, { width: '320px' });
 };
 </script>
 
 <style lang="scss" scoped>
 .sign-in {
+}
+.sign-in-form {
+  display: grid;
+  grid-row-gap: 15px;
 }
 </style>

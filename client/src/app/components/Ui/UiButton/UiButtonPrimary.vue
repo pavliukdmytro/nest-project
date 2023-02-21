@@ -4,7 +4,7 @@
     :href="props?.href"
     :type="type"
     :form="form"
-    class="def-button-primary"
+    class="ui-button-primary"
   >
     <slot />
   </component>
@@ -25,7 +25,7 @@ const componentName = computed(() => (props?.href ? 'a' : 'button'));
 </script>
 
 <style lang="scss" scoped>
-.def-button-primary {
+.ui-button-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;

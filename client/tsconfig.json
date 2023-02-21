@@ -10,7 +10,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/app/components/*"],
-      "@def/*": ["./src/app/components/Def/*"],
+      "@ui/*": ["./src/app/components/Ui/*"],
       "@use/*": ["./src/use/*"]
     },
     "sourceMap": true,
