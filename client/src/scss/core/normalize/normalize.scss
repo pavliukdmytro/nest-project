@@ -49,9 +49,8 @@ button{
   border: none;
   user-select: none;
   padding: 0;
-  &:hover{
-    cursor: pointer;
-  }
+  cursor: pointer;
+  background-color: transparent;
 }
 button:active, button:focus {
   outline: none;

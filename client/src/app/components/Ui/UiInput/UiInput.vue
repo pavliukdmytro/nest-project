@@ -16,6 +16,7 @@ import { ref, Ref, watch } from 'vue';
 import useValidate from '@use/useValidate/useValidate';
 
 interface IProps {
+  name?: string;
   type?: string;
   required?: boolean;
   pattern?: string;
@@ -45,6 +46,7 @@ watch(props, (newProps) => {
 <style lang="scss" scoped>
 .ui-input {
   &__fill {
+    width: 100%;
     height: 40px;
     padding: 15px;
     border: 1px solid black;
