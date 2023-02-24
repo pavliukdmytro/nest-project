@@ -11,8 +11,10 @@
     <div class="container">
       <div class="header-main">
         <HeaderLogo />
-        <AuthControl v-if="screenWidth >= 992" />
-        <MobileNavigationButton v-if="screenWidth < 992" />
+        <div class="header-control">
+          <AuthControl />
+          <MobileNavigationButton v-if="screenWidth < 992" />
+        </div>
       </div>
     </div>
   </div>
@@ -46,5 +48,11 @@ const screenWidth = useScreenWidth();
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.header-control {
+  display: flex;
+  :deep(.mobile-navigation-button) {
+    margin-left: 10px;
+  }
 }
 </style>

@@ -28,7 +28,7 @@ const props = defineProps<{
   };
   afterLeave: () => void;
 }>();
-console.log(props);
+
 const hide = () => {
   modal.hide();
 };

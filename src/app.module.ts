@@ -9,6 +9,8 @@ import { LangModule } from './lang/lang.module';
 import { BlogModule } from './blog/blog.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { join } from 'path';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -31,6 +33,8 @@ import { join } from 'path';
     // other modules
     LangModule,
     BlogModule,
+    AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService, LangService],

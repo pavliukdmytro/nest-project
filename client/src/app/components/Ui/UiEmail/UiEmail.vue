@@ -17,6 +17,7 @@ import { ref, Ref, watch } from 'vue';
 import useValidate from '@use/useValidate/useValidate';
 
 interface IProps {
+  name?: string;
   required?: boolean;
   pattern?: string;
   value?: string;

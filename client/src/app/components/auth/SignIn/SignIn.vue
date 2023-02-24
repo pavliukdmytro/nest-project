@@ -5,8 +5,8 @@
     </UiTitle>
 
     <form action="" class="sign-in-form" @submit.prevent="handlerSubmit">
-      <UiEmail placeholder="email" :required="true" />
-      <UiInput placeholder="password" type="password" :required="true" />
+      <UiEmail placeholder="email" :required="true" name="email" />
+      <UiInput placeholder="password" type="password" :required="true" name="password" />
       <UiButtonPrimary type="submit"> submit </UiButtonPrimary>
     </form>
     <button type="button" class="sign-in__button" @click="handlerSignUp">sign up</button>
@@ -14,6 +14,7 @@
 </template>
 
 <script lang="ts" setup>
+import axios from 'axios';
 import UiInput from '@components/Ui/UiInput/UiInput.vue';
 import UiEmail from '@ui/UiEmail/UiEmail.vue';
 import UiTitle from '@ui/UiTitle/UiTitle.vue';
@@ -21,7 +22,11 @@ import SignUp from '@components/auth/SignUp/SignUp.vue';
 import useModal from '@use/useModal/useModal';
 import UiButtonPrimary from '@ui/UiButton/UiButtonPrimary.vue';
 
-const handlerSubmit = () => {};
+const handlerSubmit = async (e: SubmitEvent) => {
+  const target = e.target as HTMLFormElement;
+  const formData = new FormData(target);
+  const response = await axios.post('/auth/login', Object.fromEntries(formData));
+};
 
 const modal = useModal();
 
