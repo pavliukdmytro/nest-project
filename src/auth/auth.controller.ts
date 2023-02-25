@@ -44,7 +44,7 @@ export class AuthController {
 
   @Post('signup')
   @UseInterceptors(FileInterceptor(''))
-  async registration(@Body() createUserDto: CreateUserDto) {
+  async register(@Body() createUserDto: CreateUserDto) {
     return await this.authService.registration(createUserDto);
   }
 }

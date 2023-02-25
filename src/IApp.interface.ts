@@ -29,4 +29,9 @@ export interface ICommonData {
   args: {
     lang: string;
   };
+  // user?: {
+  //   _id: string;
+  //   email: string;
+  //   role: Array<string>;
+  // };
 }

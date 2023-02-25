@@ -3,10 +3,8 @@ import { LangService } from '@/lang/lang.service';
 import { I18nService } from 'nestjs-i18n';
 
 import { IRequest } from '@/interfaces/IRequest';
-import { ICommonData } from '@/IApp.interface';
+import { ICommonData, ICookiesAccept, IMenu } from '@/IApp.interface';
 import { IObject } from '@/interfaces/IObject';
-import { IMenu } from '@/IApp.interface';
-import { ICookiesAccept } from '@/IApp.interface';
 
 @Injectable()
 export class AppService {
@@ -22,14 +20,13 @@ export class AppService {
     fileName: string,
     args?: IObject,
   ): Promise<any> {
-    const data = await this.i18nService.t(fileName, {
+    return await this.i18nService.t(fileName, {
       args: {
         lang: lang,
         ...args,
       },
       lang,
     });
-    return data;
   }
 
   async getMenuData(req: IRequest): Promise<IMenu> {
@@ -51,7 +48,13 @@ export class AppService {
   }
 
   async getCommonData(req: IRequest, pageName: string): Promise<ICommonData> {
+    // interface IUser {
+    //   _id: string;
+    //   email: string;
+    //   role: Array<string>;
+    // }
     const { i18nLang } = req;
+    // const user = req.user as IUser;
     const messages: IObject = await this.getTranslateData(i18nLang, pageName, {
       username: 'Dima',
     });
@@ -67,6 +70,7 @@ export class AppService {
       cookiesAccept: await this.getCookiesAccept(req),
       menu: await this.getMenuData(req),
       messages,
+      // user,
       args: {
         lang: i18nLang,
       },
