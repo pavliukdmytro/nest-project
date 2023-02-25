@@ -1,6 +1,7 @@
 import { App, createApp, DefineComponent, ref } from 'vue';
 import ModalComponent from '@/use/useModal/ModalComponent.vue';
 import VueUniversalModal from 'vue-universal-modal';
+import { store, storeKey } from '@/store';
 
 let app: App | null;
 
@@ -36,6 +37,8 @@ export default function useModal() {
     app.use(VueUniversalModal, {
       teleportTarget: '#modals',
     });
+
+    app.use(store, storeKey);
 
     app.mount('.modal-component');
   };

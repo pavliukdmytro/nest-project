@@ -20,6 +20,7 @@ export interface ICommonData {
     items: {
       [name: number]: ILangItem;
     };
+    i18nLang: string;
   };
   mainPageLink: ILink;
   messages: IObject;

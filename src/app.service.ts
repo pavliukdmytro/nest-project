@@ -48,11 +48,6 @@ export class AppService {
   }
 
   async getCommonData(req: IRequest, pageName: string): Promise<ICommonData> {
-    // interface IUser {
-    //   _id: string;
-    //   email: string;
-    //   role: Array<string>;
-    // }
     const { i18nLang } = req;
     // const user = req.user as IUser;
     const messages: IObject = await this.getTranslateData(i18nLang, pageName, {
@@ -62,6 +57,7 @@ export class AppService {
     return {
       lang: {
         ...this.langService.getItems(req),
+        i18nLang,
       },
       mainPageLink: {
         url: this.getUrl('/', i18nLang),
@@ -70,7 +66,6 @@ export class AppService {
       cookiesAccept: await this.getCookiesAccept(req),
       menu: await this.getMenuData(req),
       messages,
-      // user,
       args: {
         lang: i18nLang,
       },

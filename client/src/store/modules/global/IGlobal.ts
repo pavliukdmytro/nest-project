@@ -8,6 +8,7 @@ export interface ILang {
       active?: boolean;
     };
   };
+  i18nLang: string;
 }
 
 interface IData {

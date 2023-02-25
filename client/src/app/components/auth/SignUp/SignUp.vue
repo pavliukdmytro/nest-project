@@ -1,7 +1,7 @@
 <template>
   <div class="sign-up">
     <UiTitle :result="2" center>
-      <h2>Sign up</h2>
+      <h2>{{ registerData.title }}</h2>
     </UiTitle>
     <form action="" class="sign-up-form" @submit.prevent="handlerSubmit">
       <UiEmail name="email" placeholder="email" required />
@@ -20,14 +20,16 @@
         :is-valid="validatePassword"
         @change="passwordTwo = $event.target.value"
       />
-      <UiButtonPrimary> submit </UiButtonPrimary>
+      <UiButtonPrimary>{{ registerData.button }}</UiButtonPrimary>
     </form>
-    <button type="button" class="sign-up__button" @click="handlerSignIn">sign in</button>
+    <button type="button" class="sign-up__button" @click="handlerSignIn">
+      {{ registerData.goSignIn }}
+    </button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onBeforeMount } from 'vue';
 import axios from 'axios';
 import SignIn from '@components/auth/SignIn/SignIn.vue';
 import useModal from '@use/useModal/useModal';
@@ -57,13 +59,25 @@ const validatePassword = computed(() => {
   return false;
 });
 
+interface IRegisterData {
+  title?: string;
+  button?: string;
+  goSignIn?: string;
+}
+
+const registerData = ref<IRegisterData>({});
 const handlerSubmit = async (e: SubmitEvent) => {
   const target = e.target as HTMLFormElement;
   const formData = new FormData(target);
 
   // const response = await axios.post('/auth/signup', formData);
-  const response = await axios.post('/auth/signup', formData);
+  await axios.post('/auth/register', formData);
 };
+
+onBeforeMount(async () => {
+  const { data } = await axios.get('/auth/register');
+  registerData.value = data;
+});
 </script>
 
 <style lang="scss" scoped>

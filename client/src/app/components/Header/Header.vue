@@ -1,10 +1,10 @@
 <template>
   <div class="header">
-    <div class="header-top-wrapper">
+    <div v-if="screenWidth >= 992" class="header-top-wrapper">
       <div class="container">
         <div class="header-top">
-          <Menu v-if="screenWidth >= 992" />
-          <Lang v-if="screenWidth >= 992" />
+          <Menu />
+          <Lang />
         </div>
       </div>
     </div>

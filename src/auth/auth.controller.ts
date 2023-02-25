@@ -5,6 +5,7 @@ import {
   Req,
   Body,
   UseInterceptors,
+  Get,
   InternalServerErrorException,
 } from '@nestjs/common';
 import { LocalAuthGuard } from '@/auth/local-auth.guard';
@@ -13,10 +14,17 @@ import { AuthService } from '@/auth/auth.service';
 import { CreateUserDto } from '@/auth/auth.dto';
 import { AuthenticatedGuard } from '@/auth/authenticated.guard';
 import { Request } from 'express';
+import { I18n, I18nContext } from 'nestjs-i18n';
 
-@Controller('auth')
+@Controller(':lang/auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
+
+  @Get('login')
+  async getLoginData(@I18n() i18n: I18nContext) {
+    return i18n.t('auth.login');
+  }
+
   @UseInterceptors(FileInterceptor(''))
   @UseGuards(LocalAuthGuard)
   @Post('login')
@@ -33,7 +41,6 @@ export class AuthController {
 
     if (logoutError) {
       console.error(logoutError);
-
       throw new InternalServerErrorException('Could not log out user');
     }
 
@@ -42,7 +49,12 @@ export class AuthController {
     };
   }
 
-  @Post('signup')
+  @Get('register')
+  async getRegisterData(@I18n() i18n: I18nContext) {
+    return i18n.t('auth.register');
+  }
+
+  @Post('register')
   @UseInterceptors(FileInterceptor(''))
   async register(@Body() createUserDto: CreateUserDto) {
     return await this.authService.registration(createUserDto);
