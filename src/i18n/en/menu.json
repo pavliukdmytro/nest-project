@@ -1,12 +1,12 @@
 {
   "items": [
     {
-      "url": "/{lang}/blog/",
+      "url": "{lang}/blog/",
       "text": "Blog",
       "active": false
     },
     {
-      "url": "/{lang}/catalog/",
+      "url": "{lang}/catalog/",
       "text": "Catalog",
       "active": false
     }

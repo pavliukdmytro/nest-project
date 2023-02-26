@@ -5,7 +5,15 @@ import { IRequest } from '@/interfaces/IRequest';
 @Injectable()
 export class LangService {
   private replaceLangInUrl(path: string, lang: string): string {
-    return path.replace(/^\/\w\w\/?/, `/${lang}/`);
+    // console.log(path.replace(/^\/\w\w\/?/, ``));
+    if (lang == 'ua') {
+      return path.replace(/^\/\w\w\//, `/`);
+    }
+    if (path.match(/^\/\w\w\//)) {
+      return path.replace(/^\/\w\w\//, `/${lang}/`);
+    } else {
+      return `/${lang}${path}`;
+    }
   }
   getItems(req: IRequest): LangItemsDto {
     const { path, i18nLang } = req;

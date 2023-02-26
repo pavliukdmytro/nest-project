@@ -2,7 +2,7 @@ import { Controller, Get, Render, Req } from '@nestjs/common';
 import { AppService } from '@/app.service';
 import { IRequest } from '@/interfaces/IRequest';
 
-@Controller('/:lang/blog')
+@Controller('/:lang?/blog')
 export class BlogController {
   constructor(private readonly appService: AppService) {}
   @Get()

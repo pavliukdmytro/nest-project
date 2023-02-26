@@ -13,6 +13,7 @@ export class AppService {
     private readonly i18nService: I18nService,
   ) {}
   getUrl(url: string, lang): string {
+    if (lang == 'ua') return url;
     return `/${lang}${url}`;
   }
   async getTranslateData(
@@ -20,9 +21,10 @@ export class AppService {
     fileName: string,
     args?: IObject,
   ): Promise<any> {
+    // console.log(fileName, lang == 'ua' ? '' : `/${lang}`);
     return await this.i18nService.t(fileName, {
       args: {
-        lang: lang,
+        lang: lang == 'ua' ? '' : `/${lang}`,
         ...args,
       },
       lang,
@@ -50,9 +52,11 @@ export class AppService {
   async getCommonData(req: IRequest, pageName: string): Promise<ICommonData> {
     const { i18nLang } = req;
     // const user = req.user as IUser;
-    const messages: IObject = await this.getTranslateData(i18nLang, pageName, {
-      username: 'Dima',
-    });
+    const messages: IObject = await this.getTranslateData(
+      i18nLang,
+      pageName,
+      {},
+    );
 
     return {
       lang: {
